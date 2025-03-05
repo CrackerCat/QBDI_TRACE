@@ -28,18 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = binding.sampleText;
-        System.loadLibrary("test");
-        tv.setText(stringFromJNI());
-        Log.i("qbdi", String.valueOf(add(1,3)));
-
+        tv.setText("test");
 
     }
 
-    /**
-     * A native method that is implemented by the 'qbdi' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
-    public native int add(int a, int b);
 
 }

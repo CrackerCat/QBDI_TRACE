@@ -28,11 +28,12 @@ SET_OPTION(Plugin.LinkerLoadCallback ON)
 SET_OPTION(Plugin.Android.BionicLinkerUtil ON)
 
 add_subdirectory(Dobby dobby.build)
-
+add_subdirectory(raw_syscall)
 
 INCLUDE_DIRECTORIES(
         Dobby/include
         qbdi-arm64/include
+        raw_syscall
         include
         utils
         hook
@@ -43,10 +44,11 @@ INCLUDE_DIRECTORIES(
 # find local Installed QBDI
 
 
+
 add_library(qbdi-arm64 STATIC IMPORTED)
 add_library(qbdi-arm64-share SHARED IMPORTED)
 set_target_properties(qbdi-arm64 PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/qbdi-arm64/lib/libQBDI.a)
-set_target_properties(qbdi-arm64-share PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/qbdi-arm64/libQBDI.so)
+#set_target_properties(qbdi-arm64-share PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/qbdi-arm64/libQBDI.so)
 
 
 aux_source_directory(hook hook_src_list)
@@ -64,7 +66,9 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         dobby_static
-        qbdi-arm64-share
+        qbdi-arm64
+        raw_syscall
+#        qbdi-arm64-share
 #        QBDI::AARCH64::QBDI
         android
         log)

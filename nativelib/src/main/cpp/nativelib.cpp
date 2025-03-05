@@ -4,10 +4,18 @@
 #include <cstdio>
 #include <dlfcn.h>
 #include <fstream>
+
+#include <pthread.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/system_properties.h>
+
 #include "vm.h"
 #include "nativelib.h"
 #include "HookUtils.h"
 #include "HookInfo.h"
+#include "mylibc.h"
+
 
 using namespace std;
 #define HOOK_ADDR_DOBBY(func)  \
@@ -22,14 +30,57 @@ uint64_t get_tick_count64() {
     return (ts.tv_sec*1000 + ts.tv_nsec/(1000*1000));
 }
 
+
+// 线程函数
+void* thread_function(void* arg) {
+    LOGE("Thread is running...");
+    pthread_exit(nullptr);
+}
+
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_f_nativelib_NativeLib_stringFromJNI(
         JNIEnv *env,
         jobject /* this */) {
+
     std::string hello = "Hello from C++";
+
+    // 创建线程
+    pthread_t thread;
+    if (pthread_create(&thread, nullptr, thread_function, nullptr) == 0) {
+        LOGE("Thread created successfully!");
+    } else {
+        LOGE("Failed to create thread");
+    }
+
+    // 读取 /proc/self/maps
+    int fd = my_open("/proc/self/maps", O_RDONLY, 0);  // 替换 open() 为 my_open()
+
+    if (fd >= 0) {
+        char buffer[256];
+        ssize_t bytesRead = my_read(fd, buffer, sizeof(buffer) - 1);  // 替换 read() 为 my_read()
+
+        if (bytesRead > 0) {
+            buffer[bytesRead] = '\0';
+            LOGE("Maps: %s", buffer);
+        }
+
+        close(fd);  // 这里的 close() 仍然可以使用标准库的 close()
+    } else {
+        LOGE("Failed to open /proc/self/maps");
+    }
+
+
+    // 读取 system property
+    char prop_value[PROP_VALUE_MAX];
+    if (__system_property_get("ro.build.version.release", prop_value) > 0) {
+        LOGE("Android Version: %s", prop_value);
+    } else {
+        LOGE("Failed to read system property");
+    }
+
+    // 原有代码逻辑
     auto a = env->NewStringUTF("123123");
     env->DeleteLocalRef(a);
-
 
     long b = 0;
     while (true){
@@ -44,15 +95,16 @@ Java_com_f_nativelib_NativeLib_stringFromJNI(
                 text[i] = 'a' + ((text[i] - 'a' + shift) % 26);
             }
         }
-
-        if ( b >= 1l){
+        if (b >= 1L){
             break;
         }
     }
+    // 线程等待
+    pthread_join(thread, nullptr);
 
-    //aaa();
     return env->NewStringUTF(hello.c_str());
 }
+
 
 int sub(int a, int b) {
     return a + b;
@@ -108,7 +160,7 @@ void vm_handle_add(void* address, DobbyRegisterContext *ctx, addr_t *relocated_a
 
 
 void aaa() {
-    DobbyInstrumentQBDI((void *) (add), vm_handle_add);
+//    DobbyInstrumentQBDI((void *) (add), vm_handle_add);
     LOGE("%d", add(1, 2));
     LOGE("%d", add(1, 2));
     LOGE("%d", add(1, 2));
