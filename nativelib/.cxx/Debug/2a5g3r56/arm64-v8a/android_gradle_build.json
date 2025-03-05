@@ -1,0 +1,96 @@
+{
+  "buildFiles": [
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\CMakeLists.txt",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\builtin-plugin\\SymbolResolver\\CMakeLists.txt",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\cmake\\auto_source_group.cmake",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\cmake\\build_environment_check.cmake",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\cmake\\compiler_and_linker.cmake",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\cmake\\Macros.cmake",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\cmake\\Util.cmake",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\cmake\\xcode_generator_helper.cmake",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\CMakeLists.txt",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\external\\logging\\CMakeLists.txt",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\Dobby\\external\\osbase\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "E:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "E:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "dobby::@cd91b79a9933ef46aee2": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "dobby",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\build\\intermediates\\cxx\\Debug\\2a5g3r56\\obj\\arm64-v8a\\libdobby.so",
+      "runtimeFiles": []
+    },
+    "dobby_static::@cd91b79a9933ef46aee2": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "dobby_static",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a\\dobby.build\\libdobby.a"
+    },
+    "dobby_symbol_resolver::@79a06aac1133c0d544b5": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "dobby_symbol_resolver",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a\\dobby.build\\builtin-plugin\\SymbolResolver\\libdobby_symbol_resolver.a"
+    },
+    "logging::@6951ea7f431deced6c66": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "logging",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a\\dobby.build\\external\\logging\\liblogging.a"
+    },
+    "macho_ctx_kit::@79a06aac1133c0d544b5": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "macho_ctx_kit",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a\\dobby.build\\builtin-plugin\\SymbolResolver\\libmacho_ctx_kit.a"
+    },
+    "nativelib::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "nativelib",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\build\\intermediates\\cxx\\Debug\\2a5g3r56\\obj\\arm64-v8a\\libnativelib.so",
+      "runtimeFiles": [
+        "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\qdbi-arm64\\libQBDI.so"
+      ]
+    },
+    "osbase::@7b3170643513b2efcc6a": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "osbase",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a\\dobby.build\\external\\osbase\\libosbase.a"
+    },
+    "shared_cache_ctx_kit::@79a06aac1133c0d544b5": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "shared_cache_ctx_kit",
+      "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\.cxx\\Debug\\2a5g3r56\\arm64-v8a\\dobby.build\\builtin-plugin\\SymbolResolver\\libshared_cache_ctx_kit.a"
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "E:\\Android\\Sdk\\ndk\\21.1.6352462\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "E:\\Android\\Sdk\\ndk\\21.1.6352462\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cc",
+    "cpp"
+  ]
+}

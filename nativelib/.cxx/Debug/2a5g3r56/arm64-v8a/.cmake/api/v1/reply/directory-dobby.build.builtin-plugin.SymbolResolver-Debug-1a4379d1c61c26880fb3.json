@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "dobby.build/builtin-plugin/SymbolResolver",
+		"source" : "Dobby/builtin-plugin/SymbolResolver"
+	}
+}

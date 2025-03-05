@@ -1,0 +1,3 @@
+C:/Users/14473/Desktop/DobbyWithQBDI/app/.cxx/RelWithDebInfo/1g5d115f/arm64-v8a/CMakeFiles/test.dir
+C:/Users/14473/Desktop/DobbyWithQBDI/app/.cxx/RelWithDebInfo/1g5d115f/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/14473/Desktop/DobbyWithQBDI/app/.cxx/RelWithDebInfo/1g5d115f/arm64-v8a/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,11 @@
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\CMakeLists.txt
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\builtin-plugin\SymbolResolver\CMakeLists.txt
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\cmake\auto_source_group.cmake
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\cmake\build_environment_check.cmake
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\cmake\compiler_and_linker.cmake
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\cmake\Macros.cmake
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\cmake\Util.cmake
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\cmake\xcode_generator_helper.cmake
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\CMakeLists.txt
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\external\logging\CMakeLists.txt
+C:\Users\14473\Desktop\DobbyWithQBDI\nativelib\src\main\cpp\Dobby\external\osbase\CMakeLists.txt

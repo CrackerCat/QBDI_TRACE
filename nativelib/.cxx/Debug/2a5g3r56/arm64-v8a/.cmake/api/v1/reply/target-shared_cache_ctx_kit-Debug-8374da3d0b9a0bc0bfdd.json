@@ -1,0 +1,200 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "dobby.build/builtin-plugin/SymbolResolver/libshared_cache_ctx_kit.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"Dobby/builtin-plugin/SymbolResolver/CMakeLists.txt",
+			"CMakeLists.txt",
+			"Dobby/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 44,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 11,
+				"parent" : 2
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 2,
+				"line" : 81,
+				"parent" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 2,
+				"line" : 98,
+				"parent" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-rtti -fno-exceptions -fomit-frame-pointer -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC"
+				},
+				{
+					"fragment" : "-std=gnu++11"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/source"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/builtin-plugin"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/builtin-plugin/AndroidRestriction"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/builtin-plugin/SymbolResolver"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/external/logging"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/./include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/./source"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/source/dobby"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/./external"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/./external/logging"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/./builtin-plugin"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/source/Backend/UserMode"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp/Dobby/builtin-plugin/SymbolResolver/."
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				1
+			],
+			"sysroot" : 
+			{
+				"path" : "E:/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			}
+		}
+	],
+	"id" : "shared_cache_ctx_kit::@79a06aac1133c0d544b5",
+	"name" : "shared_cache_ctx_kit",
+	"nameOnDisk" : "libshared_cache_ctx_kit.a",
+	"paths" : 
+	{
+		"build" : "dobby.build/builtin-plugin/SymbolResolver",
+		"source" : "Dobby/builtin-plugin/SymbolResolver"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "Dobby/builtin-plugin/SymbolResolver/macho/shared_cache_ctx.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dobby/builtin-plugin/SymbolResolver/macho/shared_cache_ctx.cpp",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
