@@ -1,5 +1,0 @@
-Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
-clang version 14.0.0 (https://github.com/buffcow/ollvm-project.git 5c64d11d6a04d007fa8dc5887cfc4b843670121f)
-Target: x86_64-w64-windows-gnu
-Thread model: posix
-InstalledDir: E:/Android/Sdk/ndk/ndk25r_ollvm/toolchains/llvm/prebuilt/windows-x86_64/bin

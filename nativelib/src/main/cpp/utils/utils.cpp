@@ -58,15 +58,7 @@ const char *get_data_path(jobject context) {
     return data;
 }
 
-int get_sdk_level() {
-    if (SDK_INT > 0) {
-        return SDK_INT;
-    }
-    char sdk[128] = {0};
-    __system_property_get("ro.build.version.sdk", sdk);
-    SDK_INT = atoi(sdk);
-    return SDK_INT;
-}
+
 
 
 char *get_linker_path() {

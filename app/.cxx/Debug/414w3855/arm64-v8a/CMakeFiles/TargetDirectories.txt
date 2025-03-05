@@ -1,3 +1,0 @@
-C:/Users/14473/Desktop/DobbyWithQBDI/app/.cxx/Debug/414w3855/arm64-v8a/CMakeFiles/test.dir
-C:/Users/14473/Desktop/DobbyWithQBDI/app/.cxx/Debug/414w3855/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/Users/14473/Desktop/DobbyWithQBDI/app/.cxx/Debug/414w3855/arm64-v8a/CMakeFiles/rebuild_cache.dir
