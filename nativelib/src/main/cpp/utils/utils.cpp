@@ -2,7 +2,7 @@
 // Created by Mrack on 2024/4/19.
 //
 #include "utils.h"
-#include "elfio/elfio.hpp"
+#include "../elfio/elfio.hpp"
 
 JavaVM *gVm = nullptr;
 jobject gContext = nullptr;

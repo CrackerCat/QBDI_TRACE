@@ -45,12 +45,26 @@ static std::ofstream *hookStrHandlerOs;
 static bool isSave = false;
 
 
-VM_BEFORE(sig)
-//LOGD("VM_BEFORE %lx", ctx->general.x[0]);
-//LOGD("VM_BEFORE %lx", ctx->general.x[1]);
-    VM_AFTER
-//LOGD("VM_AFTER %lx", ctx->general.x[0]);
-//VM_END(sig)
+void vm_handle_sig(void* address, DobbyRegisterContext *ctx, addr_t *relocated_addr) {
+    LOGE("vm address %p ", address);
+    DobbyDestroy(address);
+    auto vm_ = new vm();
+    auto qvm = vm_->init(address);
+    auto state = qvm.getGPRState();
+    QBDI::rword retval;
+    syn_regs(ctx, state, true);
+
+    uint8_t *fakestack;
+    QBDI::allocateVirtualStack(state, STACK_SIZE, &fakestack);
+
+    // LOGD("VM_BEFORE %lx", ctx->general.x[0]);
+    // LOGD("VM_BEFORE %lx", ctx->general.x[1]);
+
+    qvm.call(nullptr, (uint64_t) address);
+    syn_regs(ctx, state, false);
+    QBDI::alignedFree(fakestack);
+
+    // LOGD("VM_AFTER %lx", ctx->general.x[0]);
 }
 
 int aaa = 0;
@@ -387,7 +401,7 @@ HOOK_DEF(void,call_array,const char* array_name,
          bool reverse,
          const char* realpath){
 
-    LOGD("call init function: %s %s ",array_name,realpath);
+    LOGE("call init function: %s %s ",array_name,realpath);
     orig_call_array(array_name,functions,count,reverse,realpath);
 
 }

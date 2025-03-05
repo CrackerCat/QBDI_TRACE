@@ -6,22 +6,12 @@
 #define XPOSEDNHOOK_UTILS_H
 
 #include <string>
-#include "dobby/dobby.h"
+#include "../Dobby/include/dobby.h"
 #include <assert.h>
 #include <android/log.h>
 #include <jni.h>
 
-#ifdef NDEBUG
-#define LOGD(...)
-#define LOGE(...)
-#define LOGI(...)
-#define LOGW(...)
-#else
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, "MainHook", __VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "MainHook", __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "MainHook", __VA_ARGS__)
-#define LOGW(...) __android_log_print(ANDROID_LOG_WARN, "MainHook", __VA_ARGS__)
-#endif
+
 #define ANDROID_O 26
 #define ANDROID_O2 27
 #define ANDROID_P 28

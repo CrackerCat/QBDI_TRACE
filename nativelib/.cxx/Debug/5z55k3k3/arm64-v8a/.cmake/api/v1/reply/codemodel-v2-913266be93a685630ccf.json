@@ -1,0 +1,207 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "dobby.build",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4
+					],
+					"jsonFile" : "directory-dobby.build-Debug-b5b215cbc8ccda3a6621.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "Dobby",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "dobby.build/external/logging",
+					"jsonFile" : "directory-dobby.build.external.logging-Debug-9bdf8212169b26de7999.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Dobby/external/logging",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "dobby.build/external/osbase",
+					"jsonFile" : "directory-dobby.build.external.osbase-Debug-1af4f4d513cc4f15e56c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Dobby/external/osbase",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "dobby.build/builtin-plugin/SymbolResolver",
+					"jsonFile" : "directory-dobby.build.builtin-plugin.SymbolResolver-Debug-1a4379d1c61c26880fb3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Dobby/builtin-plugin/SymbolResolver",
+					"targetIndexes" : 
+					[
+						2,
+						4,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "nativelib",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"name" : "Dobby",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "dobby::@cd91b79a9933ef46aee2",
+					"jsonFile" : "target-dobby-Debug-6ebf35dcbec8fd121a79.json",
+					"name" : "dobby",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "dobby_static::@cd91b79a9933ef46aee2",
+					"jsonFile" : "target-dobby_static-Debug-3ab02764b43bc8fb3216.json",
+					"name" : "dobby_static",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "dobby_symbol_resolver::@79a06aac1133c0d544b5",
+					"jsonFile" : "target-dobby_symbol_resolver-Debug-f038ee92b435a1083c0b.json",
+					"name" : "dobby_symbol_resolver",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "logging::@6951ea7f431deced6c66",
+					"jsonFile" : "target-logging-Debug-08b3f2c92108fa11d53c.json",
+					"name" : "logging",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "macho_ctx_kit::@79a06aac1133c0d544b5",
+					"jsonFile" : "target-macho_ctx_kit-Debug-c51f40683b8466edbbd9.json",
+					"name" : "macho_ctx_kit",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nativelib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nativelib-Debug-3875b21860a6d3b1ccb2.json",
+					"name" : "nativelib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "osbase::@7b3170643513b2efcc6a",
+					"jsonFile" : "target-osbase-Debug-7c3e3aada7b9ee9db25b.json",
+					"name" : "osbase",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "shared_cache_ctx_kit::@79a06aac1133c0d544b5",
+					"jsonFile" : "target-shared_cache_ctx_kit-Debug-99f651144e11a8d661c3.json",
+					"name" : "shared_cache_ctx_kit",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/.cxx/Debug/5z55k3k3/arm64-v8a",
+		"source" : "C:/Users/14473/Desktop/DobbyWithQBDI/nativelib/src/main/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

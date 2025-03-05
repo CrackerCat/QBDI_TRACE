@@ -38,7 +38,7 @@
       "abi": "arm64-v8a",
       "output": "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\build\\intermediates\\cxx\\Debug\\5z55k3k3\\obj\\arm64-v8a\\libnativelib.so",
       "runtimeFiles": [
-        "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\qdbi-arm64\\libQBDI.so"
+        "C:\\Users\\14473\\Desktop\\DobbyWithQBDI\\nativelib\\src\\main\\cpp\\qbdi-arm64\\libQBDI.so"
       ]
     },
     "dobby_symbol_resolver::@79a06aac1133c0d544b5": {

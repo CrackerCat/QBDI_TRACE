@@ -32,7 +32,7 @@ add_subdirectory(Dobby dobby.build)
 
 INCLUDE_DIRECTORIES(
         Dobby/include
-        qdbi-arm64/include
+        qbdi-arm64/include
         include
         utils
         hook
@@ -41,14 +41,12 @@ INCLUDE_DIRECTORIES(
 )
 
 # find local Installed QBDI
-set(CMAKE_FIND_ROOT_PATH "/usr/local")
 
-find_package(QBDIAARCH64 REQUIRED)
 
-add_library(qdbi-arm64 STATIC IMPORTED)
-add_library(qdbi-arm64-share SHARED IMPORTED)
-set_target_properties(qdbi-arm64 PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/qdbi-arm64/lib/libQBDI.a)
-set_target_properties(qdbi-arm64-share PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/qdbi-arm64/libQBDI.so)
+add_library(qbdi-arm64 STATIC IMPORTED)
+add_library(qbdi-arm64-share SHARED IMPORTED)
+set_target_properties(qbdi-arm64 PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/qbdi-arm64/lib/libQBDI.a)
+set_target_properties(qbdi-arm64-share PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/qbdi-arm64/libQBDI.so)
 
 
 aux_source_directory(hook hook_src_list)
@@ -66,7 +64,7 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         dobby_static
-        qdbi-arm64-share
+        qbdi-arm64-share
 #        QBDI::AARCH64::QBDI
         android
         log)
