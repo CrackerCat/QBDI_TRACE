@@ -12,17 +12,13 @@ import com.f.qbdi.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     // Used to load the 'qbdi' library on application startup.
-    static {
-        System.loadLibrary("nativelib");
 
-    }
 
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new NativeLib().stringFromJNI();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

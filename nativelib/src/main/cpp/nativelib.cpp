@@ -83,11 +83,13 @@ Java_com_f_nativelib_NativeLib_stringFromJNI(
     env->DeleteLocalRef(a);
 
     long b = 0;
-    while (true){
-        b++;
+    while (true) {
+        __atomic_fetch_add(&b, 1, __ATOMIC_SEQ_CST);  // 原子加法操作
+
         char text[100] = "aasddsadsa";
         int shift = 15;
         int i;
+
         for (i = 0; i < strlen(text); i++) {
             if (text[i] >= 'A' && text[i] <= 'Z') {
                 text[i] = 'A' + ((text[i] - 'A' + shift) % 26);
@@ -95,10 +97,47 @@ Java_com_f_nativelib_NativeLib_stringFromJNI(
                 text[i] = 'a' + ((text[i] - 'a' + shift) % 26);
             }
         }
-        if (b >= 1L){
+
+        int atomic_val = 42;  // 普通整数变量
+
+        // 使用 GCC 原子操作
+        int prev_and = __atomic_fetch_and(&atomic_val, 0x0F, __ATOMIC_SEQ_CST);
+        int prev_or = __atomic_fetch_or(&atomic_val, 0xF0, __ATOMIC_SEQ_CST);
+        int prev_xor = __atomic_fetch_xor(&atomic_val, 0xFF, __ATOMIC_SEQ_CST);
+
+        std::cout << "Previous AND value: " << prev_and << "\n";
+        std::cout << "Previous OR value: " << prev_or << "\n";
+        std::cout << "Previous XOR value: " << prev_xor << "\n";
+
+        if (b >= 1L) {
             break;
         }
+        std::atomic<long> counter(0);
+
+
     }
+
+    char text[100] = "aasddsadsa";
+    int shift = 15;
+    for (int i = 0; i < strlen(text); i++) {
+        char old_val, new_val;
+
+        do {
+            old_val = text[i];
+
+            if (old_val >= 'A' && old_val <= 'Z') {
+                new_val = 'A' + ((old_val - 'A' + shift) % 26);
+            } else if (old_val >= 'a' && old_val <= 'z') {
+                new_val = 'a' + ((old_val - 'a' + shift) % 26);
+            } else {
+                break;  // 不是字母则跳过
+            }
+
+            // CAS（比较并交换）确保多线程环境下的安全修改
+        } while (!std::atomic_compare_exchange_weak(
+                reinterpret_cast<std::atomic<char>*>(&text[i]), &old_val, new_val));
+    }
+
     // 线程等待
     pthread_join(thread, nullptr);
 
@@ -212,12 +251,10 @@ void vm_handle_sig1(void* address, DobbyRegisterContext *ctx, addr_t *relocated_
 
     // 将虚拟机的日志数据写入文件
     std::ofstream out;
+    string private_path = getPrivatePath();
 
-//    std::string data = get_data_path(gContext); // 获取日志文件的路径
-    char* private_path = getPrivatePath();
-    string p = private_path;
-    p.append("trace_log.txt");
-    out.open(p.c_str(), std::ios::out); // 打开或创建日志文件
+    private_path.append("trace_log.txt");
+    out.open(private_path.c_str(), std::ios::out); // 打开或创建日志文件
     out << vm_->logbuf.str(); // 将虚拟机日志缓冲区的内容写入文件
     out.close(); // 关闭文件
 
@@ -236,11 +273,5 @@ extern "C" void _init(void) {
 
 __unused __attribute__((constructor)) void init_main() {
     // add hook
-
-
     DobbyInstrumentQBDI((void*)Java_com_f_nativelib_NativeLib_stringFromJNI, vm_handle_sig1);
-
-
-
-
 }

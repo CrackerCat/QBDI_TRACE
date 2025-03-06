@@ -10,6 +10,7 @@
 #include <cerrno>
 #include <iosfwd>
 #include <sys/system_properties.h>
+#include <fstream>
 #include <string>
 #include "linkerHandler.h"
 #include "logger.h"
@@ -44,8 +45,15 @@ using namespace std;
 static std::ofstream *hookStrHandlerOs;
 static bool isSave = false;
 
+uint64_t get_tick_count() {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC,&ts);
+    return (ts.tv_sec*1000 + ts.tv_nsec/(1000*1000));
+}
 
 void vm_handle_sig(void* address, DobbyRegisterContext *ctx, addr_t *relocated_addr) {
+    uint64_t now = get_tick_count();
+    size_t number = 1;
     LOGE("vm address %p ", address);
     DobbyDestroy(address);
     auto vm_ = new vm();
@@ -64,10 +72,22 @@ void vm_handle_sig(void* address, DobbyRegisterContext *ctx, addr_t *relocated_a
     syn_regs(ctx, state, false);
     QBDI::alignedFree(fakestack);
 
+    // 将虚拟机的日志数据写入文件
+    std::ofstream out;
+    string private_path = getPrivatePath();
+
+    private_path.append("trace_log.txt");
+    out.open(private_path.c_str(), std::ios::out); // 打开或创建日志文件
+    out << vm_->logbuf.str(); // 将虚拟机日志缓冲区的内容写入文件
+    out.close(); // 关闭文件
+
+    // 记录并输出函数执行时间
+    LOGD("Read %ld times cost = %lfs\n", number, (double)(get_tick_count() - now) / 1000);
+
     // LOGD("VM_AFTER %lx", ctx->general.x[0]);
 }
 
-int aaa = 0;
+int state_hook = 0;
 
 void onSoLoadedAfter(const char *filename,void *ret){
     auto mapInfo = getSoBaseAddress(filename);
@@ -76,26 +96,55 @@ void onSoLoadedAfter(const char *filename,void *ret){
             filename, mapInfo.start, mapInfo.end, (mapInfo.end - mapInfo.start));
     LOGI("%s ", buffer);
 
-//    if (isSave) {
-//        if (hookStrHandlerOs != nullptr) {
-//            (*hookStrHandlerOs) << buffer;
-//        }
-//    }
-    string f = string(filename);
-    if ( f.find("nep") != -1 && aaa == 0){
-        HookInfo::getInstance().set_module(filename,mapInfo.start,mapInfo.end);
-        recordToFile("name:%s\nbase:%zx\nend:%zx",filename,mapInfo.start,mapInfo.end);
+    string libname = "libmetasec_ml.so";
+    auto metasec_ml = getSoBaseAddress(libname.c_str());
+    if (metasec_ml.start != 0){
+        string f = string(filename);
+        if (state_hook == 0){
+            HookInfo::getInstance().set_module(libname.c_str(),metasec_ml.start,metasec_ml.end);
+            recordToFile("name:%s\nbase:%zx\nend:%zx",libname.c_str(),metasec_ml.start,metasec_ml.end);
+            state_hook = 1;
+            auto base =  get_addr(libname.c_str());
+            int offset = 0x9E098;
+            LOGI("base %lx  offset %lx symbol %lx ", base,  offset , base+offset);
 
-        aaa = 1;
-        auto base =  get_addr(filename);
-        //int offset = 0x20068C;//get
-        int offset = 0x200b0c;
-//        int offset = 0x1DB0C4;
-        auto symbol = (void*)(base+offset);
+            auto symbol = (void*)(base+offset);
 
-        DobbyInstrumentQBDI(symbol,vm_handle_sig);
+            DobbyInstrumentQBDI(symbol,vm_handle_sig);
+        }
     }
 }
+
+
+void onSoLoaded(const char *filename, void *ret) {
+    auto mapInfo = getSoBaseAddress(filename);
+
+    if (mapInfo.start == 0) {
+        LOGI("Warning: %s not found in memory!", filename);
+        return;
+    }
+
+    char buffer[PATH_MAX];
+    sprintf(buffer, "linker load %s  start-> 0x%zx  end-> 0x%zx  size -> %lu",
+            filename, mapInfo.start, mapInfo.end, (mapInfo.end - mapInfo.start));
+    LOGI("%s ", buffer);
+
+    string f = string(filename);
+    if (f.find("libmetasec_ml.so") != -1 && sta == 0) {
+        HookInfo::getInstance().set_module(filename, mapInfo.start, mapInfo.end);
+        recordToFile("name:%s\nbase:%zx\nend:%zx", filename, mapInfo.start, mapInfo.end);
+
+        sta = 1;
+        auto base = get_addr(filename);
+        int offset = 0x9E098;
+        auto symbol = (void*)(base + offset);
+
+        DobbyInstrumentQBDI(symbol, vm_handle_sig);
+    }
+}
+
+
+
 HOOK_DEF(void *, dlopen_CI, const char *filename, int flag) {
     char temp[PATH_MAX];
     void *ret = orig_dlopen_CI(filename, flag);
